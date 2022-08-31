@@ -24,3 +24,17 @@ def enviar(request):
         'website': request.POST['sitioweb'],
     }
     return render(request, 'encuesta/respuesta.html', context)
+
+def ejercicio1(request):
+    context = {
+        'titulo': "Ejercicio1",
+    }
+    return render(request, 'encuesta/ejercicio1.html', context)
+
+def enviar1(request):
+    context = {
+        'numero1': request.POST['numero1'],
+        'numero2': request.POST['numero2'],
+        'resultado': 'numero1'+'numero2',
+    }
+    return render(request, 'encuesta/ejercicio1Respuesta.html', context)
