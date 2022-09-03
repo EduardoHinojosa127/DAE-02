@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import math
 # Create your views here.
 
 from django.shortcuts import render
@@ -26,15 +26,47 @@ def enviar(request):
     return render(request, 'encuesta/respuesta.html', context)
 
 def ejercicio1(request):
+
     context = {
         'titulo': "Ejercicio1",
     }
-    return render(request, 'encuesta/ejercicio1.html', context)
+    return render(request, 'encuesta/ejercicio1.html',context)
 
 def enviar1(request):
+    resultado=0
+    n1=int(request.POST['numero1'])
+    n2=int(request.POST['numero2'])
+    opr=request.POST['operacion']
+    if opr=="suma":
+        resultado=n1+n2
+    elif opr=="resta":
+        resultado=n1-n2
+    elif opr=="multiplicacion":
+        resultado=n1*n2
     context = {
-        'numero1': request.POST['numero1'],
-        'numero2': request.POST['numero2'],
-        'resultado': 'numero1'+'numero2',
+        'numero1': n1,
+        'numero2': n2,
+        'resultado': resultado,
     }
     return render(request, 'encuesta/ejercicio1Respuesta.html', context)
+
+
+def ejercicio2(request):
+
+    context = {
+        'titulo': "Cálculo del volumen de un cilindro",
+    }
+    return render(request, 'encuesta/ejercicio2.html',context)
+
+def enviar2(request):
+    resultado=0
+    n1=int(request.POST['num1'])
+    n2=int(request.POST['num2'])
+
+    resultado= math.pi*n1*((n2/2)**2)
+    context = {
+        'num1': n1,
+        'num2': n2,
+        'resultado': resultado,
+    }
+    return render(request, 'encuesta/ejercicio2Respuesta.html', context)
